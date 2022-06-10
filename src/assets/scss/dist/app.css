@@ -1,0 +1,20 @@
+* {
+  padding: 0px;
+}
+
+* ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+* ul li {
+  margin: 0;
+  padding: 0;
+}
+
+* p {
+  margin: 0;
+}
+
+/*# sourceMappingURL=app.css.map */

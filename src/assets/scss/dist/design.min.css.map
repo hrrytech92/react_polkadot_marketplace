@@ -1,0 +1,1 @@
+{"version":3,"sources":["design.scss"],"names":[],"mappings":"AAAA,sBACE,MAAO","file":"design.min.css","sourcesContent":[".design_container {\r\n  img {\r\n    width: 100%;\r\n  }\r\n}"]}

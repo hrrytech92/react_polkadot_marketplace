@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["play.scss"],"sourcesContent":[".play_container {\r\n  height: 400px;\r\n  margin-top: 175px;\r\n\r\n  p {\r\n    font-size: 40px;\r\n    text-align: center;\r\n  }\r\n}"],"file":"play.css"}

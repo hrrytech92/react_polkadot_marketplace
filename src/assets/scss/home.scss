@@ -1,0 +1,449 @@
+.page_container {
+  .above_dungeon_wrapper {
+    background-color: #000;
+    width: 100%;
+    height: 230px;
+  }
+
+  .dungeon_wrapper {
+    background: url('../img/Background_Water_Dungeon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    // background-attachment: fixed;
+    width: 100%;
+    height: 650px;
+    text-align: center;
+    padding-bottom: 110px;
+    @media (max-width: 641px) {
+      height: 450px;
+      padding-bottom: 0;
+    }
+    position: relative;
+
+    .big_log {
+      height: 85%;
+      @media (max-width: 1024px) {
+        height: 60%;
+      }
+      margin-top: -80px;
+    }
+
+    .social_icons_wrapper {
+      margin-top: -30px;
+      a {
+        transform: scale(1);
+        transition: all 0.2s;
+        &:hover {
+          svg {
+            transform: scale(1.1);
+            color: #f49000 !important;
+          }
+        }
+      }
+    }
+
+    .btnPlayNow {
+      display: inline-block;
+      background-color: rgb(244, 144, 0);
+      padding: 10px 40px;
+      margin: 40px 0;
+      color: rgb(37, 34, 33);
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  .dungeon_btm_shadow_wrapper {
+    position: relative;
+    background-color: black;
+    height: 300px;
+    .description_wrapper {
+      position: absolute;
+      top: -80px;
+      color: white;
+      font-size: 24px;
+      padding: 0 25%;
+      @media (max-width: 1024px) {
+        padding: 0 10%;
+      }
+      font-style: italic;
+    }
+
+    .dungeon_menu_wrapper {
+      padding-top: 120px;
+      @media (max-width: 641px) {
+        padding-top: 200px;
+
+        a {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+      }
+      text-align: center;
+      a {
+        text-decoration: none;
+        padding: 0 20px;
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+          color: #f49000;
+        }
+      }
+    }
+
+    .game_lore_bar {
+      text-align: center;
+      position: absolute;
+      bottom: -100px;
+      width: 100%;
+
+      @media (max-width: 641px) {
+        bottom: -180px;
+      }
+      img {
+        width: 90px;
+      }
+
+      .label {
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        margin-top: -15px;
+      }
+    }
+  }
+
+  .lore_wrapper {
+    background: url('../img/back_lore.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 1000px;
+    @media (max-width: 641px) {
+      padding-top: 180px;
+    }
+
+    .video_lore_container, .photo_lore_container {
+      padding: 0 200px;
+      @media (max-width: 1024px) {
+        padding: 0 10%;
+      }
+      padding-top: 250px;
+      @media (max-width: 1024px) {
+        padding-top: 50px;
+      }
+      display: flex;
+      @media (max-width: 1024px) {
+        display: block;
+      }
+      justify-content: space-between;
+      align-items: center;
+      .video_container {
+        width: 40%;
+        @media (max-width: 1024px) {
+          width: 100%;
+        }
+        height: 300px;
+        background-color: rgb(136, 136, 136);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 60px;
+          height: 60px;
+          cursor: pointer;
+          transform: scale(1);
+          transition: all 0.3s;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+
+      }
+
+      .photo_container {
+        width: 50%;
+        @media (max-width: 1024px) {
+          width: 100%;
+          margin-top: 50px;
+        }
+        height: 300px;
+
+        .image-gallery-right-nav, .image-gallery-left-nav {
+          display: none;
+        }
+      }
+
+      .video_desc, .photo_desc {
+        width: 40%;
+        color: white;
+        font-size: 18px;
+        text-align: justify;
+        @media (max-width: 1024px) {
+          width: 100%;
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+
+  .lore_bottom_wrapper {
+    background: url('../img/back_lore_bottom.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 400px;
+  }
+
+  .features_wrapper {
+    background: url('../img/back_features.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    width: 100%;
+    padding: 0 0 100px 0;
+
+    .features_bar {
+      text-align: center;
+      width: 100%;
+      padding-top: 250px;
+      @media (max-width: 641px) {
+        padding-top: 600px;
+      }
+      img {
+        width: 90px;
+      }
+
+      .label {
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        margin-top: -15px;
+      }
+    }
+
+    .feature_container {
+      padding: 60px 200px 0 200px;
+      @media (max-width: 1024px) {
+        padding: 60px 10% 0 10%;
+      }
+      display: flex;
+      @media (max-width: 1024px) {
+        display: block;
+      }
+      justify-content: space-between;
+      align-items: center;
+
+      .feature_desc_container {
+        width: 60%;
+        @media (max-width: 1024px) {
+          width: 100%;
+          // margin-top: 50px;
+        }
+        transform: translateX(0%) scale(1) translateZ(0px);
+        cursor: pointer;
+
+        &:hover {
+          transform: translateX(0%) scale(1.05) translateZ(0px);
+          transition: all 0.3s;
+  
+          .feature_more {
+            text-decoration: underline;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+          }
+        }
+  
+        &:not(:hover) {
+          transform: translateX(0%) scale(1) translateZ(0px);
+          transition: all 0.3s;
+  
+          .feature_more {
+            text-decoration: unset;
+          }
+        }
+
+        .feature_title {
+          color: white;
+          font-weight: bold;
+          font-size: 32px;
+          text-align: right;
+        }
+
+        .feature_desc {
+          color: white;
+          font-size: 24px;
+          text-align: justify;
+        }
+
+        .feature_more {
+          color: rgb(218, 129, 0);
+          font-weight: bold;
+          font-size: 30px;
+          text-align: right;
+          cursor: pointer;
+          &:hover{
+            color: white;
+          }
+        }
+
+        @media (max-width: 641px) {
+          .feature_title {
+            font-size: 26px;
+          }
+  
+          .feature_desc {
+            font-size: 18px;
+          }
+  
+          .feature_more {
+            font-size: 22px;
+          }
+        }
+      }
+
+      .feature_nft_container {
+        width: 30%;
+        @media (max-width: 1024px) {
+          width: 100%;
+          justify-content: center;
+        }
+        @media (max-width: 641px) {
+          padding-top: 50px;
+        }
+        display: flex;
+        position: relative;
+        
+        .water_orb_sword {
+          width: 360px;
+          height: 100%;
+          @media (max-width: 641px) {
+            width: 100%;
+          }
+        }
+
+        .birds {
+          width: 360px;
+          height: auto;
+          @media (max-width: 641px) {
+            width: 100%;
+          }
+        }
+
+        .cards {
+          width: 380px;
+          height: auto;
+          @media (max-width: 641px) {
+            width: 100%;
+          }
+        }
+
+        .snake_girl {
+          width: 380px;
+          height: auto;
+          @media (max-width: 641px) {
+            width: 100%;
+          }
+        }
+      }
+
+    }
+  }
+
+
+  .play_browser_wrapper {
+    background-color: rgb(35, 33, 33);
+    padding: 120px 200px 220px 200px;
+    @media (max-width: 1024px) {
+      padding: 120px 10% 220px 10%;
+    }
+    text-align: center;
+    color: white;
+    .big_log {
+      width: 100px;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 60px;
+      margin-top: -30px;
+    }
+
+
+    .desc {
+      text-align: justify;
+      font-size: 26px;
+      font-weight: 100;
+    }
+
+    @media (max-width: 641px) {
+      .title {
+        font-size: 30px;
+        margin-top: -10px;
+      }
+
+      .desc {
+        font-size: 18px;
+      }
+    }
+
+    .btnPlayNow {
+      display: inline-block;
+      background-color: rgb(244, 144, 0);
+      padding: 10px 40px;
+      margin: 40px 0 10px 0;
+      color: rgb(37, 34, 33);
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    .shop_nft_container {
+      a {
+        color: rgb(244, 144, 0);
+        text-decoration: none;
+        padding: 0 20px;
+        font-size: 28px;
+
+        &:hover {
+          color: white;
+          text-decoration: underline;
+        }
+      }
+
+      .shop_link {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: "";
+          background-color: rgb(244, 144, 0);
+          width: 2px;
+          height: 20px;
+          top: 11px;
+          right: 0;
+        }
+      }
+    }
+  }
+}

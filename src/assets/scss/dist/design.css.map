@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["design.scss"],"sourcesContent":[".design_container {\r\n  img {\r\n    width: 100%;\r\n  }\r\n}"],"file":"design.css"}
