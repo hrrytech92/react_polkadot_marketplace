@@ -245,3 +245,43 @@
   }
  
 }
+
+.dlg_buy {
+  .MuiPaper-root {
+    background-color: rgba(3, 17, 31, 0.82);
+    color: white;
+
+    .dlg_buy_container {
+      background: url('../img/back_modal.png');
+
+      .dlg_buy_body {
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0.36);
+        border-radius: 6px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      h2 {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+      }
+      p {
+        color: white;
+      }
+
+      .btn_buy {
+        border: 1px solid #ff9e20;
+        background-color: #ff9e20;
+        color: black;
+        font-weight: bold;
+        padding: 3px 15px;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}

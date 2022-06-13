@@ -2,8 +2,7 @@ import React from "react";
 import {
   BrowserRouter,
   Routes,
-  Route,
-  browserHistory
+  Route
 } from "react-router-dom";
 
 import './assets/scss/app.scss';

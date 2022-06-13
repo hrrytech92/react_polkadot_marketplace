@@ -21,6 +21,15 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 
+import {
+  web3Accounts,
+  web3Enable,
+  web3FromAddress,
+  web3FromSource,
+  web3AccountsSubscribe
+} from '@polkadot/extension-dapp';
+import { stringToHex } from "@polkadot/util";
+import AppConstant from '../config/AppConstant';
 import "../assets/scss/header.scss";
 
 const headersData = [
@@ -147,7 +156,41 @@ export default function Header() {
     };
   }, []);
 
-  const onConnectWallet = () => {
+  const onConnectWallet = async () => {
+    const extensions = await web3Enable(AppConstant.appName);
+
+    if (extensions.length === 0) {
+        // no extension installed, or the user did not accept the authorization
+        // in this case we should inform the use and give a link to the extension
+        return;
+    }
+
+    // we are now informed that the user has at least one extension and that we
+    // will be able to show and use accounts
+    const allAccounts = await web3Accounts();
+
+    const account = allAccounts[0];
+
+    // to be able to retrieve the signer interface from this account
+    // we can use web3FromSource which will return an InjectedExtension type
+    const injector = await web3FromSource(account.meta.source);
+
+    // this injector object has a signer and a signRaw method
+    // to be able to sign raw bytes
+    const signRaw = injector?.signer?.signRaw;
+
+    if (!!signRaw) {
+        // after making sure that signRaw is defined
+        // we can use it to sign our message
+        const { signature } = await signRaw({
+            address: account.address,
+            data: stringToHex('message to sign'),
+            type: 'bytes'
+        });
+        console.log('--sss-------', account.address);
+        console.log('--sss-------', account.address);
+    }
+    
     setState((prevState) => ({ ...prevState, isConnectWallet: !prevState.isConnectWallet }));
   }
 
