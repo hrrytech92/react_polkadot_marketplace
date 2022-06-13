@@ -7,6 +7,18 @@
   color: #f49000;
 }
 
+.MuiToolbar-root .label_address_select {
+  position: absolute;
+  right: 37px;
+  top: 7px;
+}
+
+.MuiToolbar-root .label_address_select_scroll {
+  position: absolute;
+  right: 37px;
+  top: -5px;
+}
+
 .MuiToolbar-root .menu_wallet_connect {
   border: 1px solid #cfcfcf;
   display: inline-block;
@@ -23,11 +35,22 @@
   border: 1px solid #f49000;
 }
 
+.MuiToolbar-root .menu_wallet_connect .menu_wallet {
+  display: flex;
+  align-items: center;
+}
+
+.MuiToolbar-root .menu_wallet_connect .menu_wallet .wallet_icon {
+  height: 15px;
+  margin-right: 5px;
+}
+
 .MuiToolbar-root .menu_wallet_connect .balance {
   color: #f49000;
   position: relative;
   margin-left: 10px;
   font-weight: 400;
+  font-size: 14px;
 }
 
 .MuiToolbar-root .menu_wallet_connect .balance::before {
@@ -115,6 +138,7 @@
   position: relative;
   margin-left: 10px;
   font-weight: 400;
+  font-size: 14px;
 }
 
 .MuiDrawer-paper .menu_wallet_connect .balance::before {
