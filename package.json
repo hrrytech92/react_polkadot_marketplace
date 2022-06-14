@@ -5,12 +5,16 @@
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
+    "@polkadot/api": "^8.8.2",
     "@polkadot/extension-dapp": "^0.44.1",
+    "@polkadot/util": "^9.4.1",
+    "@polkadot/util-crypto": "^9.4.1",
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.3.2",
     "@testing-library/user-event": "4.2.4",
     "axios": "^0.27.2",
+    "material-ui-flat-pagination": "^4.1.2",
     "node-sass": "^7.0.1",
     "react": "16.8.0",
     "react-dom": "16.8.0",
@@ -36,7 +40,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "env": {
+      "es2020": true,
+      "browser": true,
+      "node": true,
+      "mocha": true
+    },
+    "globals":{
+      "BigInt":true
+    }
   },
   "browserslist": {
     "production": [

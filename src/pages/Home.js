@@ -46,9 +46,9 @@ class Home extends React.Component {
             <div className="dungeon_wrapper">
               <img className="big_log" src={ require("../assets/img/Logo-1.png") } alt="" />
               <div className="social_icons_wrapper">
-                <a href="https://twitter.com" target="_blank" rel="noreferrer"><TwitterIcon style={{ color: 'white', fontSize:'40px' }} stroke={"white"} strokeWidth={1}/></a>
-                <a href="https://www.youtube.com" target="_blank" rel="noreferrer"><YouTubeIcon style={{ color: 'white', padding: '0 5px 0 5px', fontSize:'40px' }} fontSize="large" stroke={"white"} strokeWidth={1}/></a>
-                <a href="https://www.instagram.com" target="_blank" rel="noreferrer"><InstagramIcon style={{ color: 'white', fontSize:'40px' }} fontSize="large" stroke={"white"} strokeWidth={1}/></a>
+                <a href="https://twitter.com" target="_blank" rel="noreferrer"><TwitterIcon className="social_icon"/></a>
+                <a href="https://www.youtube.com" target="_blank" rel="noreferrer"><YouTubeIcon className="social_icon"/></a>
+                <a href="https://www.instagram.com" target="_blank" rel="noreferrer"><InstagramIcon className="social_icon"/></a>
               </div>
               <Bounce left cascade>
                 <div className="btnPlayNow">PLAY NOW!</div>

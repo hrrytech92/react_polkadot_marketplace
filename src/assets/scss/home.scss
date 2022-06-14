@@ -31,14 +31,16 @@
 
     .social_icons_wrapper {
       margin-top: -30px;
-      a {
-        transform: scale(1);
-        transition: all 0.2s;
+      .social_icon {
+        border: 1px solid white;
+        background: white;
+        color: black;
+        border-radius: 50%;
+        font-size: 40px;
+        padding: 10px;
+        margin: 0 10px;
         &:hover {
-          svg {
-            transform: scale(1.1);
-            color: #f49000 !important;
-          }
+          color: #f49000;
         }
       }
     }

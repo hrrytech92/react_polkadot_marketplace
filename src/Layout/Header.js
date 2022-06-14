@@ -1,3 +1,4 @@
+/* global BigInt */
 import {
   AppBar,
   Toolbar,
@@ -27,6 +28,7 @@ import {
   web3FromSource,
 } from '@polkadot/extension-dapp';
 import { stringToHex } from "@polkadot/util";
+import { ApiPromise, WsProvider } from '@polkadot/api';
 import AppConstant from '../config/AppConstant';
 import "../assets/scss/header.scss";
 
@@ -169,11 +171,11 @@ export default function Header() {
       // will be able to show and use accounts
       const allAccounts = await web3Accounts();
 
-      const account = allAccounts[0];
+      const activeAccount = allAccounts[0];
 
       // to be able to retrieve the signer interface from this account
       // we can use web3FromSource which will return an InjectedExtension type
-      const injector = await web3FromSource(account.meta.source);
+      const injector = await web3FromSource(activeAccount.meta.source);
 
       // this injector object has a signer and a signRaw method
       // to be able to sign raw bytes
@@ -183,12 +185,20 @@ export default function Header() {
           // after making sure that signRaw is defined
           // we can use it to sign our message
           const { signature } = await signRaw({
-              address: account.address,
+              address: activeAccount.address,
               data: stringToHex('message to sign'),
               type: 'bytes'
           });
-          const address = account.address;
+
+          const address = activeAccount.address;
           const visibleAddress = address.substring(0, 4) + "..." + address.substring(address.length - 4, address.length);
+
+          const provider = new WsProvider('wss://kusama-rpc.polkadot.io');
+          const api = await ApiPromise.create({ provider });
+          const { data: { free: previousFree }, nonce: previousNonce } = await api.query.system.account(address);
+          const balance = (BigInt(previousFree.toHuman().split(",").join('')) / BigInt(1000000)).toString();
+          
+          console.log('---------balance---------', balance);
           setState({walletAddress: visibleAddress});
       }
 

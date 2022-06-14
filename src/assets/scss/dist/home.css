@@ -5,7 +5,7 @@
 }
 
 .page_container .dungeon_wrapper {
-  background: url("../img/Background-Water Dungeon.png");
+  background: url("../img/Background_Water_Dungeon.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -38,14 +38,18 @@
   margin-top: -30px;
 }
 
-.page_container .dungeon_wrapper .social_icons_wrapper a {
-  transform: scale(1);
-  transition: all 0.2s;
+.page_container .dungeon_wrapper .social_icons_wrapper .social_icon {
+  border: 1px solid white;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  font-size: 40px;
+  padding: 10px;
+  margin: 0 10px;
 }
 
-.page_container .dungeon_wrapper .social_icons_wrapper a:hover svg {
-  transform: scale(1.1);
-  color: #f49000 !important;
+.page_container .dungeon_wrapper .social_icons_wrapper .social_icon:hover {
+  color: #f49000;
 }
 
 .page_container .dungeon_wrapper .btnPlayNow {
