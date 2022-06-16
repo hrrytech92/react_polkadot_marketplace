@@ -1,5 +1,6 @@
 export const IS_LOADING = 'IS_LOADING';
 export const HELLO_RESPONSE = 'HELLO_RESPONSE';
+export const WALLET_INFO = 'WALLET_INFO';
 
 export function isLoading(isLoading = false) {
   return {
@@ -8,24 +9,9 @@ export function isLoading(isLoading = false) {
   };
 }
 
-function helloResponse(json) {
+export const getWalletInfo = (data) => {
   return {
-    type: HELLO_RESPONSE,
-    json: json,
-  };
-}
-
-export function fetchHello() {
-  return dispatch => {
-    dispatch(isLoading(true));
-    fetch('http://5afa7456edf5520014cbd352.mockapi.io/hello-world')
-      .then(response => {
-        return response;
-      })
-      .then(response => response.json())
-      .then(json => {
-        dispatch(isLoading(false));
-        dispatch(helloResponse(json));
-      });
-  };
-}
+    type: WALLET_INFO,
+    data
+  }
+};

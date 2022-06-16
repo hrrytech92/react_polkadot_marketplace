@@ -43,7 +43,7 @@
   background: white;
   color: black;
   border-radius: 50%;
-  font-size: 40px;
+  font-size: 60px;
   padding: 10px;
   margin: 0 10px;
 }
@@ -110,6 +110,7 @@
   color: white;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .page_container .dungeon_btm_shadow_wrapper .dungeon_menu_wrapper a:hover {

@@ -3,7 +3,7 @@
 }
 
 .MuiToolbar-root a:hover {
-  text-decoration: underline overline;
+  text-decoration: underline;
   color: #f49000;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .MuiToolbar-root .menu_nft:hover {
-  text-decoration: underline overline;
+  text-decoration: underline;
   color: #f49000;
 }
 
@@ -149,6 +149,100 @@
   width: 1px;
   height: 15px;
   background-color: #f49000;
+}
+
+.wallet_info_dlg {
+  margin-top: 0px;
+}
+
+.wallet_info_dlg .MuiDialog-paper {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 300px;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  background-color: #2f3233;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root {
+  position: relative;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 14px;
+  width: 10px;
+  height: 10px;
+  background-color: #2f3233;
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 9999;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_container {
+  color: white;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_container .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_container .balance_info {
+  position: relative;
+  padding: 5px 0 0 15px;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_container .balance_info::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 22%;
+  width: 2px;
+  height: 80%;
+  background-color: #E2E8F0;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_container .balance_info .balance_item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_container:nth-child(2) {
+  margin-top: 30px;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_row_item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: white;
+  margin-top: 15px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_row_item:hover {
+  color: #f49000;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_row_item:hover a {
+  color: #f49000;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .balance_row_item .MuiSvgIcon-root {
+  font-size: 16px;
+}
+
+.wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root .watcher a {
+  text-decoration: none;
+  color: white;
 }
 
 /*# sourceMappingURL=header.css.map */

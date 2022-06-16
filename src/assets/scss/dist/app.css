@@ -1,6 +1,12 @@
 * {
   padding: 0px;
   font-family: "Myriad Pro";
+  box-sizing: border-box;
+}
+
+* body {
+  padding-right: 0 !important;
+  overflow: auto !important;
 }
 
 * ul {

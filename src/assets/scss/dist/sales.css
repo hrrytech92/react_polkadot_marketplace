@@ -1,0 +1,303 @@
+.sales_container {
+  background: url("../img/back_sales.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  padding: 150px 0 0 0;
+  position: relative;
+}
+
+.sales_container .sales_bar_wrapper {
+  text-align: center;
+  height: 250px;
+}
+
+.sales_container .sales_bar_wrapper h3 {
+  display: inline-block;
+  color: white;
+  font-size: 38px;
+  font-weight: bold;
+  position: absolute;
+  top: 300px;
+  left: 50%;
+}
+
+.sales_container .sales_bar_wrapper img {
+  width: 230px;
+  position: absolute;
+  left: 50%;
+  top: 130px;
+}
+
+@media (max-width: 768px) {
+  .sales_container .sales_bar_wrapper h3 {
+    left: 30%;
+  }
+  .sales_container .sales_bar_wrapper img {
+    left: 30%;
+  }
+}
+
+.sales_container .sales_desc_wrapper {
+  padding: 0 200px;
+  color: white;
+  text-align: justify;
+  font-style: italic;
+  font-size: 16px;
+}
+
+@media (max-width: 889px) {
+  .sales_container .sales_desc_wrapper {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sales_container .sales_desc_wrapper {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 595px) {
+  .sales_container .sales_desc_wrapper {
+    padding: 0 20px;
+  }
+}
+
+.sales_container .nfts_wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  padding: 0 120px;
+  align-items: center;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper {
+  width: 16%;
+  display: inline-block;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_photo_wrapper {
+  background-color: #2f3233;
+  border-radius: 5px;
+  border: 2px solid #2f3233;
+  text-align: center;
+  padding: 30px 0;
+  position: relative;
+  height: 200px;
+  cursor: pointer;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_photo_wrapper:hover {
+  border: 2px solid #ff9e20;
+  transition: all 0.2s;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_photo_wrapper:hover .label {
+  color: #ff9e20;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_photo_wrapper .item_mark {
+  position: absolute;
+  left: calc(50% - 65px);
+  width: 130px;
+  top: -26px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_photo_wrapper .label {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_photo_wrapper .item_photo {
+  height: 60%;
+  margin-top: 30px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_photo_wrapper .item_photo_sword {
+  height: 100%;
+  transform: rotate(30deg);
+  margin-top: 0px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_photo_wrapper .item_photo_character {
+  height: 80%;
+  margin-top: 20px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_photo_wrapper .item_photo_kanaria {
+  height: 70%;
+  margin-top: 30px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_cnt_info {
+  color: #ff9e20;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .nft_desc {
+  color: white;
+  font-style: italic;
+  font-size: 14px;
+  text-align: justify;
+  margin-top: 10px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper ul {
+  color: white;
+  list-style: disc;
+  padding-left: 40px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .btn_buy_wrapper {
+  padding: 0 20px;
+  margin-top: 30px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .btn_buy_wrapper .btn_buy {
+  background-color: #f49000;
+  padding: 8px 10px;
+  color: black;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sales_container .nfts_wrapper .nft_item_wrapper .btn_buy_wrapper .btn_buy:hover {
+  color: white;
+}
+
+.sales_container .nfts_wrapper .nft_all_wrapper {
+  width: 25%;
+  text-align: center;
+}
+
+.sales_container .nfts_wrapper .nft_all_wrapper img {
+  width: 100%;
+}
+
+.sales_container .nfts_wrapper .nft_all_wrapper .time_wrapper {
+  color: white;
+  font-size: 28px;
+}
+
+.sales_container .nfts_wrapper .nft_all_wrapper .btn_buy_wrapper {
+  padding: 0 20px;
+  margin-top: 30px;
+}
+
+.sales_container .nfts_wrapper .nft_all_wrapper .btn_buy_wrapper .btn_buy {
+  background-color: #f49000;
+  padding: 8px 10px;
+  color: black;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sales_container .nfts_wrapper .nft_all_wrapper .btn_buy_wrapper .btn_buy:hover {
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .sales_container .nfts_wrapper {
+    padding: 0 80px;
+    flex-wrap: wrap;
+  }
+  .sales_container .nfts_wrapper .nft_item_wrapper {
+    width: 40%;
+  }
+  .sales_container .nfts_wrapper .nft_all_wrapper {
+    width: 100%;
+  }
+  .sales_container .nfts_wrapper .nft_all_wrapper .btn_buy_wrapper {
+    padding: 0 200px;
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sales_container .nfts_wrapper {
+    padding: 0 60px;
+  }
+  .sales_container .nfts_wrapper .nft_item_wrapper {
+    width: 100%;
+    margin-bottom: 60px;
+    padding: 0 60px;
+  }
+  .sales_container .nfts_wrapper .nft_all_wrapper .btn_buy_wrapper {
+    padding: 0 20px;
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 595px) {
+  .sales_container .nfts_wrapper {
+    padding: 0 20px;
+  }
+  .sales_container .nfts_wrapper .nft_all_wrapper .btn_buy_wrapper {
+    padding: 0 60px;
+    margin-bottom: 80px;
+  }
+}
+
+.sales_container .body_bottom_wrapper {
+  background: url("../img/back_footer.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  width: 100%;
+  height: 600px;
+}
+
+.dlg_buy .MuiPaper-root {
+  background-color: rgba(3, 17, 31, 0.82);
+  color: white;
+}
+
+.dlg_buy .MuiPaper-root .dlg_buy_container {
+  background: url("../img/back_modal.png");
+}
+
+.dlg_buy .MuiPaper-root .dlg_buy_container .dlg_buy_body {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.36);
+  border-radius: 6px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dlg_buy .MuiPaper-root .dlg_buy_container h2 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.dlg_buy .MuiPaper-root .dlg_buy_container p {
+  color: white;
+}
+
+.dlg_buy .MuiPaper-root .dlg_buy_container .btn_buy {
+  border: 1px solid #ff9e20;
+  background-color: #ff9e20;
+  color: black;
+  font-weight: bold;
+  padding: 3px 15px;
+}
+
+.dlg_buy .MuiPaper-root .dlg_buy_container .btn_buy:hover {
+  color: white;
+}
+
+/*# sourceMappingURL=sales.css.map */

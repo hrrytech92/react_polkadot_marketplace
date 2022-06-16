@@ -2,15 +2,14 @@
 import {
   AppBar,
   Toolbar,
-  // Typography,
   makeStyles,
   Button,
   IconButton,
   Drawer,
   Link,
-  // Menu,
   MenuItem,
 } from "@material-ui/core";
+import { connect } from 'react-redux';
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -20,7 +19,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
+// import Slide from '@material-ui/core/Slide';
+import WalletModal from '../components/Wallet_Modal';
+import { getWalletInfo } from '../store/actions';
 
 import {
   web3Accounts,
@@ -35,7 +36,7 @@ import "../assets/scss/header.scss";
 const headersData = [
   {
     label: "Play",
-    href: "/play",
+    href: "/sales",
   },
   {
     label: "Shop",
@@ -51,14 +52,14 @@ const headersData = [
   },
 ];
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="down" ref={ref} {...props} />;
-});
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="down" ref={ref} {...props} />;
+// });
 
 const useStyles = makeStyles(() => ({
   header: {
     backgroundColor: "#000",
-    paddingRight: "40px",
+    paddingRight: "40px !important",
     paddingLeft: "40px",
     paddingTop: "40px",
     paddingBottom: "40px",
@@ -69,7 +70,7 @@ const useStyles = makeStyles(() => ({
   },
   header_scroll: {
     backgroundColor: "#000",
-    paddingRight: "40px",
+    paddingRight: "40px !important",
     paddingLeft: "40px",
     paddingTop: "10px",
     paddingBottom: "10px",
@@ -99,19 +100,18 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function Header() {
+function Header(props) {
   const { header, header_scroll, logo, logo_scroll, menuButton, toolbar, drawerContainer } = useStyles();
 
   const [state, setState] = useState({
     mobileView: false,
     drawerOpen: false,
-    isConnectWallet: false,
-    walletAddress: '',
   });
 
-  const { mobileView, drawerOpen, isConnectWallet, isScrollDown, walletAddress } = state;
+  const { mobileView, drawerOpen, isScrollDown } = state;
 
   const [open, setOpen] = React.useState(false);
+  const [isShowWalletInfo, setShowWalletInfo] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -121,44 +121,19 @@ export default function Header() {
     setOpen(false);
   };
 
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const open1 = Boolean(anchorEl);
-  // const popupMenuClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-  
-  // const popUpMenuClose = () => {
-  //   setAnchorEl(null);
-  // };
+  const onHandleWalletInfo = (isShow) => {
+    setShowWalletInfo(isShow);
+  }
 
-
-  const setResponsiveness = () => {
-    return window.innerWidth < 900
-      ? setState((prevState) => ({ ...prevState, mobileView: true }))
-      : setState((prevState) => ({ ...prevState, mobileView: false }));
-  };
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    return position > 100
-      ? setState((prevState) => ({ ...prevState, isScrollDown: true }))
-      : setState((prevState) => ({ ...prevState, isScrollDown: false }));
-  };
-
-  useEffect(() => {
-    setResponsiveness();
-
-    window.addEventListener("resize", setResponsiveness);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("resize", setResponsiveness);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const onDisconnectWallet = () => {
+    props.dispatch(getWalletInfo({isConnected: false, address: '' , balance: 0}));
+    setShowWalletInfo(false);
+  }
 
   const onConnectWallet = async () => {
-    if (walletAddress.length === 0) {
+    if (props.wallet_info.isConnected === true) {
+      onHandleWalletInfo(true);
+    } else {
       const extensions = await web3Enable(AppConstant.appName);
 
       if (extensions.length === 0) {
@@ -191,22 +166,45 @@ export default function Header() {
           });
 
           const address = activeAccount.address;
-          const visibleAddress = address.substring(0, 4) + "..." + address.substring(address.length - 4, address.length);
 
           const provider = new WsProvider('wss://kusama-rpc.polkadot.io');
           const api = await ApiPromise.create({ provider });
           const { data: { free: previousFree }, nonce: previousNonce } = await api.query.system.account(address);
           const balance = (BigInt(previousFree.toHuman().split(",").join('')) / BigInt(1000000)).toString();
           
-          console.log('---------balance---------', balance);
-          setState({walletAddress: visibleAddress});
-      }
-
-      setState((prevState) => ({ ...prevState, isConnectWallet: !prevState.isConnectWallet }));
-    } else {
-
+          props.dispatch(getWalletInfo({isConnected: true, address , balance}));
+        }
     }
   }
+
+  const showFormatWalletAddress = (address) => {
+    return address.substring(0, 4) + "..." + address.substring(address.length - 4, address.length);
+  }
+
+  const setResponsiveness = () => {
+    return window.innerWidth < 900
+      ? setState((prevState) => ({ ...prevState, mobileView: true }))
+      : setState((prevState) => ({ ...prevState, mobileView: false }));
+  };
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    return position > 100
+      ? setState((prevState) => ({ ...prevState, isScrollDown: true }))
+      : setState((prevState) => ({ ...prevState, isScrollDown: false }));
+  };
+
+  useEffect(() => {
+    setResponsiveness();
+
+    window.addEventListener("resize", setResponsiveness);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("resize", setResponsiveness);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const displayDesktop = () => {
     return (
@@ -214,10 +212,10 @@ export default function Header() {
         {femmecubatorLogo}
         <div>
           {getMenuButtons()}
-          { isConnectWallet && <label className={isScrollDown ? "label_address_select_scroll" : "label_address_select"}>address select</label>}
+          { props.wallet_info.isConnected && <label className={isScrollDown ? "label_address_select_scroll" : "label_address_select"}>address select</label>}
           <div className="menu_wallet_connect" onClick={onConnectWallet}>
             <div className="menu_wallet"><img className="wallet_icon" src={ require("../assets/img/Wallet-Icon.png") } alt=""/>Connect
-            { isConnectWallet && <div className="balance">{walletAddress}</div>}
+            { props.wallet_info.isConnected && <div className="balance">{showFormatWalletAddress(props.wallet_info.address)}</div>}
             </div>
           </div>
         </div>
@@ -255,7 +253,7 @@ export default function Header() {
           <div className={drawerContainer}>{getDrawerChoices()}
             <div onClick={onConnectWallet}>
               <div className="menu_wallet_connect"><label>Connect</label>
-              { isConnectWallet && <div className="balance">$999.00</div>}
+              { props.wallet_info.isConnected && <div className="balance">$999.00</div>}
               </div>
             </div>
           </div>
@@ -304,48 +302,6 @@ export default function Header() {
             </Button>
           }
 
-          {/* {label === "NFT" && 
-            <>
-              <Button className="menu_nft" onClick={popupMenuClick}>Menu</Button>
-              <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open1}
-              onClose={popUpMenuClose}
-              PaperProps={{
-                elevation: 0,
-                sx: {
-                  overflow: 'visible',
-                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                  mt: 1.5,
-                  '& .MuiAvatar-root': {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
-                  '&:before': {
-                    content: '""',
-                    display: 'block',
-                    position: 'absolute',
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: 'background.paper',
-                    transform: 'translateY(-50%) rotate(45deg)',
-                    zIndex: 0,
-                  },
-                },
-              }}
-              >
-                <MenuItem>Profile</MenuItem>
-                <MenuItem>My account</MenuItem>
-                <MenuItem>Logout</MenuItem>
-              </Menu>
-            </>
-          } */}
-
           {label !== "NFT" && 
             <Button
               {...{
@@ -371,7 +327,7 @@ export default function Header() {
       </AppBar>
       <Dialog
         open={open}
-        TransitionComponent={Transition}
+        // TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
@@ -388,6 +344,15 @@ export default function Header() {
           <Button onClick={handleClose}>Agree</Button>
         </DialogActions>
       </Dialog>
+
+      <WalletModal isShowWalletInfo={isShowWalletInfo} onHandleWalletInfo={() => onHandleWalletInfo(false)} onDisconnectWallet={() => onDisconnectWallet()}/>
     </>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    wallet_info: state.getWalletInfo
+  };
+};
+export default connect(mapStateToProps)(Header);

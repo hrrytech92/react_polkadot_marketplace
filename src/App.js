@@ -10,6 +10,7 @@ import './assets/scss/app.scss';
 // import Layout from './Layout/Layout';
 import Home from "./pages/Home";
 import Play from "./pages/Play";
+import Sales from "./pages/Sales";
 import Shop from "./pages/Shop";
 import NFTS from "./pages/Nfts";
 import About from "./pages/About";
@@ -23,6 +24,7 @@ function App() {
       <ScrollToTop>
         <Routes>
           <Route exact path="/" element={<Home/>} />
+          <Route exact path="/sales" element={<Sales/>} />
           <Route exact path="/play" element={<Play/>} />
           <Route exact path="/shop" element={<Shop/>} />
           <Route exact path="/nft" element={<NFTS/>} />

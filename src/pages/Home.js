@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import { Link as SmothLink } from "react-scroll";
 import ImageGallery from 'react-image-gallery';
 import defaultImage from "../assets/img/back_features.png";
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -50,9 +51,11 @@ class Home extends React.Component {
                 <a href="https://www.youtube.com" target="_blank" rel="noreferrer"><YouTubeIcon className="social_icon"/></a>
                 <a href="https://www.instagram.com" target="_blank" rel="noreferrer"><InstagramIcon className="social_icon"/></a>
               </div>
-              <Bounce left cascade>
-                <div className="btnPlayNow">PLAY NOW!</div>
-              </Bounce>
+              <Link to="/play">
+                <Bounce left cascade>
+                  <div className="btnPlayNow">PLAY NOW!</div>
+                </Bounce>
+              </Link>
             </div>
 
             <div className="dungeon_btm_shadow_wrapper">
@@ -64,11 +67,38 @@ class Home extends React.Component {
               </Bounce>
               <div className="dungeon_menu_wrapper">
                 <Link to="/">Home</Link>
-                <Link to="/lore">Lore</Link>
-                <Link to="/features">Features</Link>
-                <Link to="/play">Play</Link>
+                <SmothLink
+                  activeClass="active"
+                  to="lore"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={1000}>
+                    Lore
+                  </SmothLink>
+                {/* <Link to="/lore">Lore</Link> */}
+                <SmothLink
+                  activeClass="active"
+                  to="feature"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={1000}>
+                      Features
+                </SmothLink>
+                {/* <Link to="/features">Features</Link> */}
+                <SmothLink
+                  activeClass="active"
+                  to="play"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={1000}>
+                    Play
+                  </SmothLink>
+                {/* <Link to="/play">Play</Link> */}
               </div>
-              <div className="game_lore_bar">
+              <div className="game_lore_bar" id="lore">
                 <img src={ require("../assets/img/Half-gear.png") } alt="" />
                 <Rotate top right cascade>
                   <div className="label">Game Lore</div>
@@ -82,7 +112,7 @@ class Home extends React.Component {
                   <img src={ require("../assets/img/btn_play.png")} alt=""/>
                 </div>
                 <div className="video_desc">
-                  <Bounce right cascade>
+                  <Fade right>
                     <p>
                       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt u
                       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt u
@@ -94,12 +124,12 @@ class Home extends React.Component {
                       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt u
                       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt u
                     </p>
-                  </Bounce>
+                  </Fade>
                 </div>
               </div>
               <div className="photo_lore_container">
               <div className="photo_desc">
-                <Bounce left cascade>
+                <Fade left>
                   <p>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt u
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt u
@@ -111,7 +141,7 @@ class Home extends React.Component {
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt u
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt u
                   </p>
-                </Bounce>
+                </Fade>
                 </div>
                 <div className="photo_container">
                   <ImageGallery
@@ -129,7 +159,7 @@ class Home extends React.Component {
 
             <div className="lore_bottom_wrapper"></div>
 
-            <div className="features_wrapper">
+            <div className="features_wrapper" id="feature">
               <div className="features_bar">
                 <img src={ require("../assets/img/Half-gear.png") } alt="" />
                 <Rotate top right cascade>
@@ -195,8 +225,7 @@ class Home extends React.Component {
 
             </div>
 
-            <div className="play_browser_wrapper">
-              {/* <Fade left> */}
+            <div className="play_browser_wrapper" id="play">
               <Bounce left cascade>
                 <div>
                   <img className="big_log" src={ require("../assets/img/Half-gear.png") } alt=""/>
@@ -208,14 +237,19 @@ class Home extends React.Component {
                   <br/><br/>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim 
                   </p>
                 </div>
-                <div className="btnPlayNow">
-                  PLAY NOW!
-                </div>
+              </Bounce>
+              <Link to="/play">
+                <Bounce left cascade>
+                  <div className="btnPlayNow">
+                    PLAY NOW!
+                  </div>
+                </Bounce>
+              </Link>
+              <Bounce left cascade>
                 <div className="shop_nft_container">
                   <Link to="/shop" className="shop_link">SHOP</Link>
                   <Link to="/nft">NFT's</Link>
                 </div>
-              {/* </Fade> */}
               </Bounce>
             </div>
           </div>

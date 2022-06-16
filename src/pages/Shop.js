@@ -3,41 +3,54 @@ import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import RightIcon from '@material-ui/icons/ChevronRight';
-import LeftIcon from '@material-ui/icons/ChevronLeft';
-import Pagination from "material-ui-flat-pagination";
 
 import "../assets/scss/shop.scss";
+import ShoModal from '../components/Shop_Modal';
 
 function Shop() {
   const [state, setState] = useState({
     isKanariaMore: false,
     isCharacterMore: false,
     isWeaponMore: false,
-    offset: 0
+    open: false,
+    category: 1,
   });
 
-  const { isKanariaMore, isCharacterMore, isWeaponMore, offset } = state;
+  const { isKanariaMore, isCharacterMore, isWeaponMore, open, category } = state;
 
   const onGetCategoryData = (e) => {
     const category = e.target.attributes.getNamedItem("name").value;
 
     if (category === "category_kanaria") {
-      setState((prevState) => ({isKanariaMore: !prevState.isKanariaMore}))
+      setState((prevState) => ({isKanariaMore: !prevState.isKanariaMore, open: true, category: 1}))
     }
 
     if (category === "category_character") {
-      setState((prevState) => ({...prevState, isCharacterMore: !prevState.isCharacterMore}))
+      setState((prevState) => ({...prevState, isCharacterMore: !prevState.isCharacterMore, open: true, category: 2}))
     }
 
     if (category === "category_weapons") {
-      setState((prevState) => ({...prevState, isWeaponMore: !prevState.isWeaponMore}))
+      setState((prevState) => ({...prevState, isWeaponMore: !prevState.isWeaponMore, open: true, category: 3}))
     }
 
   }
 
-  const handleClick = (offset, page) => {
-    setState((prevState) => ({...prevState, offset}))
+  const onCloseDlg = () => {
+    if (category === 1)
+    {
+      setState((prevState) => ({...prevState, isKanariaMore: !prevState.isKanariaMore, open: false}))
+    }
+
+    if (category === 2)
+    {
+      setState((prevState) => ({...prevState, isCharacterMore: !prevState.isCharacterMore, open: false}))
+    }
+
+    if (category === 3)
+    {
+      setState((prevState) => ({...prevState, isWeaponMore: !prevState.isWeaponMore, open: false}))
+    }
+
   }
 
   useEffect(() => {
@@ -79,23 +92,13 @@ function Shop() {
                 <div className='product_price'>232 KSM</div>
               </div>
             </div>
-            <div className={isKanariaMore ? 'pagination_bar' : 'pagination_bar right'}>
+            <div className='pagination_bar right'>
               {!isKanariaMore ? 
               <div name="category_kanaria" onClick={onGetCategoryData} className='see_more'>See More<ExpandMoreIcon/></div> 
               : 
-              <>
-              <Pagination
-                limit={10}
-                offset={offset}
-                total={100}
-                size="large"
-                onClick={(e, offset, page) => handleClick(offset, page)}
-                nextPageLabel={<RightIcon/>}
-                previousPageLabel={<LeftIcon/>}
-              />
               <div name="category_kanaria" onClick={onGetCategoryData} className='see_more'>
                 See Less<ExpandLessIcon/>
-              </div></>}
+              </div>}
             </div>
           </div>
           {/* Kanaria part end */}
@@ -117,23 +120,13 @@ function Shop() {
                 <div className='product_price'>232 KSM</div>
               </div>
             </div>
-            <div className={isCharacterMore ? 'pagination_bar' : 'pagination_bar right'}>
+            <div className='pagination_bar right'>
               {!isCharacterMore ? 
               <div name="category_character" onClick={onGetCategoryData} className='see_more'>See More<ExpandMoreIcon/></div> 
               : 
-              <>
-              <Pagination
-                limit={10}
-                offset={offset}
-                total={100}
-                size="large"
-                onClick={(e, offset, page) => handleClick(offset, page)}
-                nextPageLabel={<RightIcon/>}
-                previousPageLabel={<LeftIcon/>}
-              />
               <div name="category_character" onClick={onGetCategoryData} className='see_more'>
                 See Less<ExpandLessIcon/>
-              </div></>}
+              </div>}
             </div>
           </div>
           {/* Character part end */}
@@ -155,23 +148,13 @@ function Shop() {
                 <div className='product_price'>232 KSM</div>
               </div>
             </div>
-            <div className={isWeaponMore ? 'pagination_bar' : 'pagination_bar right'}>
+            <div className='pagination_bar right'>
               {!isWeaponMore ? 
               <div name="category_weapons" onClick={onGetCategoryData} className='see_more'>See More<ExpandMoreIcon/></div> 
               : 
-              <>
-              <Pagination
-                limit={10}
-                offset={offset}
-                total={100}
-                size="large"
-                onClick={(e, offset, page) => handleClick(offset, page)}
-                nextPageLabel={<RightIcon/>}
-                previousPageLabel={<LeftIcon/>}
-              />
               <div name="category_weapons" onClick={onGetCategoryData} className='see_more'>
                 See Less<ExpandLessIcon/>
-              </div></>}
+              </div>}
             </div>
           </div>
           {/* Weapon part end */}
@@ -179,6 +162,7 @@ function Shop() {
 
       </div>
       <Footer/>
+      <ShoModal isOpen={open} category={category} onClick={onCloseDlg}/>
     </>
   );
 }

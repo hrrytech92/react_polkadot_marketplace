@@ -2,7 +2,7 @@
   a {
     font-size: 18px;
     &:hover {
-      text-decoration: underline overline;
+      text-decoration: underline;
       color: #f49000;
     }
   }
@@ -53,7 +53,7 @@
         position: absolute;
         content: '';
         left: -6px;
-        top: 2px;
+        top: -2px;
         width: 1px;
         height: 20px;
         background-color: #f49000;
@@ -67,7 +67,7 @@
     color: white;
     margin-left: 38px;
     &:hover {
-      text-decoration: underline overline;
+      text-decoration: underline;
       color: #f49000;
     }
   }
@@ -142,6 +142,97 @@
         height: 15px;
         background-color: #f49000;
       }
+    }
+  }
+}
+
+.wallet_info_dlg {
+  margin-top: 0px;
+  .MuiDialog-paper {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 300px;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background-color: #2f3233;
+
+    .MuiDialogContent-root {
+      position: relative;
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 14px;
+        width: 10px;
+        height: 10px;
+        background-color: #2f3233;
+        transform: translateY(-50%) rotate(45deg);
+        z-index: 9999;
+      }
+
+      .balance_container {
+        color: white;
+        .title {
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .balance_info {
+          position: relative;
+          padding: 5px 0 0 15px;
+          &::before {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 22%;
+            width: 2px;
+            height: 80%;
+            background-color: #E2E8F0;
+          }
+          .balance_item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin: 10px 0;
+          }
+        }
+
+        &:nth-child(2) {
+          margin-top: 30px;
+        }
+      }
+
+      .balance_row_item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0;
+        color: white;
+        margin-top: 15px;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+          color: #f49000;
+
+          a {
+            color: #f49000;
+          }
+        }
+
+        .MuiSvgIcon-root {
+          font-size: 16px;
+        }
+      }
+
+      .watcher {
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+
     }
   }
 }
