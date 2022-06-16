@@ -57,7 +57,7 @@
   position: absolute;
   content: '';
   left: -6px;
-  top: 2px;
+  top: -2px;
   width: 1px;
   height: 20px;
   background-color: #f49000;
@@ -139,6 +139,8 @@
   margin-left: 10px;
   font-weight: 400;
   font-size: 14px;
+  display: flex;
+  align-items: center;
 }
 
 .MuiDrawer-paper .menu_wallet_connect .balance::before {
@@ -153,6 +155,7 @@
 
 .wallet_info_dlg {
   margin-top: 0px;
+  z-index: 9999 !important;
 }
 
 .wallet_info_dlg .MuiDialog-paper {
@@ -161,11 +164,12 @@
   position: absolute;
   top: 80px;
   right: 20px;
-  background-color: #2f3233;
+  background-color: rgba(47, 50, 51, 0.6);
 }
 
 .wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root {
   position: relative;
+  padding: 35px 20px;
 }
 
 .wallet_info_dlg .MuiDialog-paper .MuiDialogContent-root::before {
@@ -223,7 +227,7 @@
   font-weight: bold;
   margin: 10px 0;
   color: white;
-  margin-top: 15px;
+  margin-top: 20px;
   align-items: center;
   cursor: pointer;
 }

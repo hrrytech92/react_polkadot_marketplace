@@ -133,6 +133,8 @@
       margin-left: 10px;
       font-weight: 400;
       font-size: 14px;
+      display: flex;
+      align-items: center;
       &::before{
         position: absolute;
         content: '';
@@ -148,16 +150,18 @@
 
 .wallet_info_dlg {
   margin-top: 0px;
+  z-index: 9999 !important;
   .MuiDialog-paper {
     border: 1px solid rgba(255, 255, 255, 0.15);
     width: 300px;
     position: absolute;
     top: 80px;
     right: 20px;
-    background-color: #2f3233;
+    background-color: rgba(47, 50, 51, 0.6);
 
     .MuiDialogContent-root {
       position: relative;
+      padding: 35px 20px;
       &::before {
         content: "";
         display: block;
@@ -210,7 +214,7 @@
         font-weight: bold;
         margin: 10px 0;
         color: white;
-        margin-top: 15px;
+        margin-top: 20px;
         align-items: center;
         cursor: pointer;
         &:hover {

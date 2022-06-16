@@ -1,4 +1,3 @@
-/* global BigInt */
 import {
   AppBar,
   Toolbar,
@@ -14,12 +13,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-// import Slide from '@material-ui/core/Slide';
 import WalletModal from '../components/Wallet_Modal';
 import { getWalletInfo } from '../store/actions';
 
@@ -36,25 +29,21 @@ import "../assets/scss/header.scss";
 const headersData = [
   {
     label: "Play",
-    href: "/sales",
+    href: "/play",
   },
   {
     label: "Shop",
     href: "/shop",
   },
   {
-    label: "NFT",
-    href: "/nft",
+    label: "NFT SALE",
+    href: "/sales",
   },
   {
     label: "About",
     href: "/about",
   },
 ];
-
-// const Transition = React.forwardRef(function Transition(props, ref) {
-//   return <Slide direction="down" ref={ref} {...props} />;
-// });
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -110,16 +99,7 @@ function Header(props) {
 
   const { mobileView, drawerOpen, isScrollDown } = state;
 
-  const [open, setOpen] = React.useState(false);
   const [isShowWalletInfo, setShowWalletInfo] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const onHandleWalletInfo = (isShow) => {
     setShowWalletInfo(isShow);
@@ -170,6 +150,8 @@ function Header(props) {
           const provider = new WsProvider('wss://kusama-rpc.polkadot.io');
           const api = await ApiPromise.create({ provider });
           const { data: { free: previousFree }, nonce: previousNonce } = await api.query.system.account(address);
+          const test = await api.query.system.account(address);
+          console.log('--------xxxxxxxxxx---------', test);
           const balance = (BigInt(previousFree.toHuman().split(",").join('')) / BigInt(1000000)).toString();
           
           props.dispatch(getWalletInfo({isConnected: true, address , balance}));
@@ -253,7 +235,7 @@ function Header(props) {
           <div className={drawerContainer}>{getDrawerChoices()}
             <div onClick={onConnectWallet}>
               <div className="menu_wallet_connect"><label>Connect</label>
-              { props.wallet_info.isConnected && <div className="balance">$999.00</div>}
+              { props.wallet_info.isConnected && <div className="balance">{showFormatWalletAddress(props.wallet_info.address)}</div>}
               </div>
             </div>
           </div>
@@ -294,27 +276,17 @@ function Header(props) {
     return headersData.map(({ label, href }) => {
       return (
         <span key={label}>
-          {label === "NFT" && 
-            <Button className="menu_nft" id="basic-button"
-              aria-controls={open ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined} onClick={handleClickOpen}>NFT SALE
-            </Button>
-          }
-
-          {label !== "NFT" && 
-            <Button
-              {...{
-                key: label,
-                color: "inherit",
-                to: href,
-                component: RouterLink,
-                className: menuButton,
-              }}
-            >
-              {label}
-            </Button>
-          }
+          <Button
+            {...{
+              key: label,
+              color: "inherit",
+              to: href,
+              component: RouterLink,
+              className: menuButton,
+            }}
+          >
+            {label}
+          </Button>
         </span>
       );
     });
@@ -325,26 +297,6 @@ function Header(props) {
       <AppBar className={isScrollDown ? header_scroll : header}>
         {mobileView ? displayMobile() : displayDesktop()}
       </AppBar>
-      <Dialog
-        open={open}
-        // TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle>{"My NFTs"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose}>Agree</Button>
-        </DialogActions>
-      </Dialog>
-
       <WalletModal isShowWalletInfo={isShowWalletInfo} onHandleWalletInfo={() => onHandleWalletInfo(false)} onDisconnectWallet={() => onDisconnectWallet()}/>
     </>
   );

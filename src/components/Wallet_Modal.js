@@ -40,11 +40,11 @@ function Wallet_Modal(props) {
           <label className='title'>Balance</label>
           <div className='balance_info'>
             <div className='balance_item'>
-              <div>MOVR</div>
+              <div>KSM</div>
               <div>{parseFloat(props.wallet.balance).toFixed(2)}</div>
             </div>
             <div className='balance_item'>
-              <div>MOVR</div>
+              <div>KSM</div>
               <div>{parseFloat(props.wallet.balance).toFixed(2)}</div>
             </div>
           </div>
@@ -64,11 +64,10 @@ function Wallet_Modal(props) {
           <CopyrightIcon/>
         </div>
 
-        <div className='balance_row_item watcher'>
+        {/* <div className='balance_row_item watcher'>
         <a target="_blank" rel="noopener noreferrer" href="https://blockscout.moonriver.moonbeam.network/address/0x3261c30AFED2Cd4Ff1B5e506B508A451Fa261BaD/transactions">View on MoonRiver</a>
-          {/* <div>View on MoonRiver</div> */}
           <CopyrightIcon/>
-        </div>
+        </div> */}
 
         <div className='balance_row_item' onClick={() => props.onDisconnectWallet()}>
           <div>Disconnect</div>

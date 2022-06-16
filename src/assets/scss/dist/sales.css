@@ -15,18 +15,19 @@
 .sales_container .sales_bar_wrapper h3 {
   display: inline-block;
   color: white;
-  font-size: 38px;
+  font-size: 28px;
   font-weight: bold;
   position: absolute;
   top: 300px;
-  left: 50%;
+  left: 5%;
+  width: 50%;
 }
 
 .sales_container .sales_bar_wrapper img {
   width: 230px;
   position: absolute;
   left: 50%;
-  top: 130px;
+  top: 169px;
 }
 
 @media (max-width: 768px) {
