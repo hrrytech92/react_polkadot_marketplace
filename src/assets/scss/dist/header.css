@@ -1,10 +1,42 @@
-.MuiToolbar-root a {
+.MuiToolbar-root .MuiButton-text {
   font-size: 18px;
+  position: relative;
+  font-weight: 700;
+  margin-left: 38px;
+  color: white;
+  transition: all 0.2s;
 }
 
-.MuiToolbar-root a:hover {
-  text-decoration: underline;
+.MuiToolbar-root .MuiButton-text::after {
+  position: absolute;
+  content: '';
+  width: 90%;
+  height: 1px;
+  left: 5%;
+  bottom: 12px;
+  background-color: transparent;
+}
+
+.MuiToolbar-root .MuiButton-text:hover {
   color: #f49000;
+}
+
+.MuiToolbar-root .MuiButton-text:hover::after {
+  background-color: #f49000;
+}
+
+.MuiToolbar-root .active {
+  color: #f49000;
+}
+
+.MuiToolbar-root .active::after {
+  position: absolute;
+  content: '';
+  width: 90%;
+  height: 1px;
+  left: 5%;
+  bottom: 12px;
+  background-color: #f49000;
 }
 
 .MuiToolbar-root .label_address_select {
@@ -33,6 +65,7 @@
 .MuiToolbar-root .menu_wallet_connect:hover {
   color: #f49000;
   border: 1px solid #f49000;
+  transition: all 0.2s;
 }
 
 .MuiToolbar-root .menu_wallet_connect .menu_wallet {
@@ -113,11 +146,21 @@
 
 .MuiDrawer-paper a {
   color: white;
+  font-weight: 700;
+  position: relative;
 }
 
 .MuiDrawer-paper a:hover {
   text-decoration: underline !important;
   color: #f49000;
+  transition: all 0.2s;
+}
+
+.MuiDrawer-paper .active {
+  text-decoration: underline !important;
+  color: #f49000;
+  position: relative;
+  transition: all 0.2s;
 }
 
 .MuiDrawer-paper .menu_wallet_connect {

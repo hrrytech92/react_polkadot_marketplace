@@ -1,3 +1,7 @@
+.MuiAppBar-root {
+  padding-bottom: 0px !important;
+}
+
 .sales_container {
   background: url("../img/back_sales.png");
   background-repeat: no-repeat;
@@ -27,7 +31,7 @@
   width: 230px;
   position: absolute;
   left: 50%;
-  top: 169px;
+  top: 130px;
 }
 
 @media (max-width: 768px) {
@@ -45,6 +49,7 @@
   text-align: justify;
   font-style: italic;
   font-size: 16px;
+  margin-top: -20px;
 }
 
 @media (max-width: 889px) {

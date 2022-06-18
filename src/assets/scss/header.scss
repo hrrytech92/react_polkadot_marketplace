@@ -1,9 +1,40 @@
 .MuiToolbar-root {
-  a {
+  .MuiButton-text {
     font-size: 18px;
+    position: relative;
+    font-weight: 700;
+    margin-left: 38px;
+    color: white;
+    transition: all 0.2s;
+    &::after {
+      position: absolute;
+      content: '';
+      width: 90%;
+      height: 1px;
+      left: 5%;
+      bottom: 12px;
+      background-color: transparent;
+    }
     &:hover {
-      text-decoration: underline;
+      // text-decoration: underline;
       color: #f49000;
+      &::after {
+        background-color: #f49000;
+      }
+    }
+  }
+
+  .active {
+    // text-decoration: underline;
+    color: #f49000;
+    &::after {
+      position: absolute;
+      content: '';
+      width: 90%;
+      height: 1px;
+      left: 5%;
+      bottom: 12px;
+      background-color: #f49000;
     }
   }
 
@@ -32,6 +63,7 @@
     &:hover {
       color:#f49000;
       border: 1px solid #f49000;
+      transition: all 0.2s;
     }
 
     .menu_wallet {
@@ -110,10 +142,20 @@
 
   a {
     color: white;
+    font-weight: 700;
+    position: relative;
     &:hover {
       text-decoration: underline !important;
       color: #f49000;
+      transition: all 0.2s;
     }
+  }
+
+  .active {
+    text-decoration: underline !important;
+    color: #f49000;
+    position: relative;
+    transition: all 0.2s;
   }
 
   .menu_wallet_connect {

@@ -53,15 +53,16 @@ function Play() {
       <Header/>
       <div className="sales_container">
         <div className="sales_bar_wrapper">
-          <Fade left><h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.</h3></Fade>
+          {/* <Fade left><h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.</h3></Fade> */}
           <Fade right><img src={ require("../assets/img/Kanaria-Stars.png") } alt="" /></Fade>
         </div>
 
-        {/* <div className="sales_desc_wrapper">
+        <div className="sales_desc_wrapper">
           <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.
           </p>
-        </div> */}
+        </div>
 
         <div className="nfts_wrapper">
           <div className="nft_item_wrapper">

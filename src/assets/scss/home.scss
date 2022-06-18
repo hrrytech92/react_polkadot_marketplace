@@ -360,6 +360,11 @@
         .snake_girl {
           width: 380px;
           height: auto;
+          
+          @media (max-width: 1300px) {
+            width: 340px;
+          }
+
           @media (max-width: 641px) {
             width: 100%;
           }
@@ -443,7 +448,7 @@
           background-color: rgb(244, 144, 0);
           width: 2px;
           height: 20px;
-          top: 11px;
+          top: 6px;
           right: 0;
         }
       }

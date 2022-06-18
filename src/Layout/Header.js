@@ -150,8 +150,8 @@ function Header(props) {
           const provider = new WsProvider('wss://kusama-rpc.polkadot.io');
           const api = await ApiPromise.create({ provider });
           const { data: { free: previousFree }, nonce: previousNonce } = await api.query.system.account(address);
-          const test = await api.query.system.account(address);
-          console.log('--------xxxxxxxxxx---------', test);
+          // const test = await api.query.system.account(address);
+          // console.log('--------xxxxxxxxxx---------', test);
           const balance = (BigInt(previousFree.toHuman().split(",").join('')) / BigInt(1000000)).toString();
           
           props.dispatch(getWalletInfo({isConnected: true, address , balance}));
@@ -248,6 +248,7 @@ function Header(props) {
 
   const getDrawerChoices = () => {
     return headersData.map(({ label, href }) => {
+      const curPath = window.location.pathname;
       return (
         <Link
           {...{
@@ -257,6 +258,12 @@ function Header(props) {
             style: { textDecoration: "none" },
             key: label,
           }}
+          className={
+            (curPath === "/play" &&  label === "Play"? 'active' : '') || 
+            (curPath === "/shop" &&  label === "Shop"? 'active' : '') ||
+            (curPath === "/sales" &&  label === "NFT SALE"? 'active' : '') ||
+            (curPath === "/about" &&  label === "About"? 'active' : '')
+          }
         >
           <MenuItem>{label}</MenuItem>
           <br/>
@@ -274,6 +281,7 @@ function Header(props) {
 
   const getMenuButtons = () => {
     return headersData.map(({ label, href }) => {
+      const curPath = window.location.pathname;
       return (
         <span key={label}>
           <Button
@@ -284,6 +292,12 @@ function Header(props) {
               component: RouterLink,
               className: menuButton,
             }}
+            className={
+              (curPath === "/play" &&  label === "Play"? 'active' : '') || 
+              (curPath === "/shop" &&  label === "Shop"? 'active' : '') ||
+              (curPath === "/sales" &&  label === "NFT SALE"? 'active' : '') ||
+              (curPath === "/about" &&  label === "About"? 'active' : '')
+            }
           >
             {label}
           </Button>

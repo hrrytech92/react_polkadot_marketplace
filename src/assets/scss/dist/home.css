@@ -428,6 +428,12 @@
   height: auto;
 }
 
+@media (max-width: 1300px) {
+  .page_container .features_wrapper .feature_container .feature_nft_container .snake_girl {
+    width: 340px;
+  }
+}
+
 @media (max-width: 641px) {
   .page_container .features_wrapper .feature_container .feature_nft_container .snake_girl {
     width: 100%;
@@ -510,7 +516,7 @@
   background-color: #f49000;
   width: 2px;
   height: 20px;
-  top: 11px;
+  top: 6px;
   right: 0;
 }
 
